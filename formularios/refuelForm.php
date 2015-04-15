@@ -55,7 +55,7 @@ return array(
             'inArray'=>true,
         ),
     ),
-    'fuelType' => array(
+    'fuelPump' => array(
         'type'=>'radio',
         'label'=>"Surtidor",
         'options'=> array (
@@ -69,7 +69,7 @@ return array(
             'inArray'=>true,
         ),
     ),
-    'fulloption' => array(
+    'fullOption' => array(
         'type'=>'checkbox',
         'label'=>"Depósito lleno",
         'options'=> array (
@@ -117,15 +117,52 @@ return array(
 
 
 
-$data = array ('stationName'=>
-                    array(
-                            'value'=>'Urgel',
-                            'error'=>array('Muy largo', 'No es un email') 
-                    )   
+$post = array ('companyName'=>'Repsol',
+               'stationName'=>'Estación Urgell',
+                'geoLocation'=>'41.38041, 2.16060',
+                'fuelType'=>'Sin plomo 95',
+                'fuelPump'=>'3',
+                'amount'=>'15,25',
+                'quantity'=>'10',
+                'submit'=>'Repostar',
+);
+
+
+$error =array ('companyName'=>'Repsol',
+               'stationName'=>'Estación Urgell',
+                'geoLocation'=>'41.38041, 2.16060',
+                'fuelType'=>'Sin plomo 95',
+                'fuelPump'=>'3',
+                'amount'=>'15,25',
+                'quantity'=>'10',
+                'submit'=>'Repostar',                
+                'errors'=>array('companyName'=>'Muy largo, No es un email',
+                                            'stationName'=>'Muy corto')
+        
+    );
+
+
+$error = array ('companyName'=>array('value'=>'U',
+                                     'error'=>'NOmbre muy corto'
+                                ),
+                'stationName'=>array('value'=>'Urgel',
+                    'error'=>array('Muy largo', 'No es un email')
+                ),
+    
 );
 
 
 
+
+
+$data = array ('companyName'=>array('value'=>'Urgel'
+),
+    'stationName'=>array(
+        'value'=>'Urgel',
+        'error'=>array('Muy largo', 'No es un email')
+    ),
+
+);
 
  
 
