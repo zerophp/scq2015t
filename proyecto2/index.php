@@ -1,13 +1,13 @@
 <?php
 
 include ("TablaMultiplicar.php");
-include ("Fibonacc.php");
+include ("Fibonacci.php");
 include ("DibujaTabla.php");
 
 $a = 23;
-$b = 21;
+$b = 11;
 
-$arrayTabla = TablaMultiplicar($a, $c);
+$arrayTabla = TablaMultiplicar($a, $b);
 $arraySerie = Fibonacci($b);
 
 DibujaTabla($arrayTabla);
