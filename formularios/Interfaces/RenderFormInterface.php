@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Renders a form from an array
+ * Renders a form.
  * 
  * @param array $formDefinition 
  * @param array $data
- * @return string $output 
+ * @return string 
  */
 
 function RenderForm($formDefinition, $data = null)
