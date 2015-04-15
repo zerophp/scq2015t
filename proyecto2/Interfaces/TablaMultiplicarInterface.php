@@ -3,8 +3,8 @@
 /**
  * Retorna una array con la tabla de multiplicar
  * 
- * @param $filas int
- * @param $columnas int
+ * @param int $filas 
+ * @param int $columnas 
  * @return array
  */
 

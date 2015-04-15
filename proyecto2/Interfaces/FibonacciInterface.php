@@ -3,7 +3,7 @@
 /**
  * Retorna un array coa serie de Fibonacci
  * 
- * @param $max int
+ * @param int $max 
  * @return array
  */
 
