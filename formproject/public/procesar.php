@@ -1,10 +1,10 @@
 <?php
 
-include ('FilterForm.php');
-include ('ValidateForm.php');
+// include ('FilterForm.php');
+// include ('ValidateForm.php');
 include ('DibujaTabla.php');
 
-$userForm = include('UserForm.php');
+// $userForm = include('UserForm.php');
 
 
 echo "<pre>post: ";
