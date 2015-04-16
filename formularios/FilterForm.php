@@ -8,7 +8,7 @@
  * @param array $data
  * @return array
  */
-function filterForm($formDefinition, $data)
+function FilterForm($formDefinition, $data)
 {
     foreach ($formDefinition as $id => $element) {
         if ($element['filters']) {

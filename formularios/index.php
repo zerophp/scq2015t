@@ -5,6 +5,8 @@ include ('FilterForm.php');
 include ('ValidateForm.php');
 
 
-$refuelForm = include('refuelForm');
-$html = RenderForm ($refuelForm, $action, $method);
+$refuelForm = include('refuelForm.php');
+$userForm = include('UserForm.php');
+
+$html = RenderForm ($userForm, 'procesar.php', 'POST');
 echo $html;

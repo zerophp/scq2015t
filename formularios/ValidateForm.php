@@ -3,26 +3,35 @@
 function ValidateForm($formDefinition, $filteredData)
 {
     $result =true;
-    foreach ($filteredData as $key=>$value){
+    foreach ($filteredData as $key=>$value)
+    {
         $validators = $formDefinition[$key]['validators'];
-        foreach ($validators as $validator_key=>$validator_value){
-            $result = $result & Decisor($validator_key, $validator_value, $value);
+        foreach ($validators as $validator_key=>$validator_value)
+        {
+            $kaka = Decisor($validator_key, $validator_value, $value);
+            echo "<pre>";
+            print_r($kaka);
+            echo "</pre>";
+//             $result = $result & 
         }
     }
     
     /* Code goes here*/
 //     return true | $array;
+
     return  $result;
 }
 
-function Decisor($validator_key, $validator_value, $value){
-    $result = true;
+function Decisor($validator_key, $validator_value, $value)
+{
+    $result = array();
+//     $result = true;
     switch ($validator_key){
         case 'lengthMax':
-            $result = ValidateLengthMax($validator_value, $value);
+            $result[] = ValidateLengthMax($validator_value, $value);
             break;
         case 'lengthMin':
-            $result = ValidateLengthMin($validator_value, $value);
+            $result[] = ValidateLengthMin($validator_value, $value);
             break;
         default:
             
