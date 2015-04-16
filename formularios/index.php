@@ -10,3 +10,22 @@ $userForm = include('UserForm.php');
 
 $html = RenderForm ($userForm, 'procesar.php', 'POST');
 echo $html;
+
+
+
+carpeta include 
+carpeta vistas, datos, vista, modelo, controlador
+controlador, accion
+
+
+
+
+
+
+
+
+
+
+
+
+
