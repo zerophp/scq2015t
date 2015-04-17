@@ -19,6 +19,15 @@ function RenderForm($formDefinition, $action, $method, $data = null)
     {
         switch ($value['type'])
         {
+            case "hidden":
+                $output=$output. ':<input type="'
+                    .$value['type']
+                    .'" name="'
+                        .$key
+                        .'" value="'
+                            .$data[$key]
+                            .'"><br/>'."\n";
+                            break;
             case "text":
                 $output= $output.$value['label']
                                 .':<input type="'
@@ -62,7 +71,7 @@ function RenderForm($formDefinition, $action, $method, $data = null)
 
                 break;            
             case "submit":
-                $output= $output.'<input type="'
+                $output= $output.'<input name="submit" type="'
                                 .$value['type']
                                 .'" value="'
                                 .$value['label']

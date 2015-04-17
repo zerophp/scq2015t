@@ -1,47 +1,34 @@
-<?php
+<?php 
 
-$tini = microtime(true);
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
 
-for($i=1;$i<=1000;$i++)
+
+include ("../vendor/zerophp/core/parseUrl.php");
+$request = parseUrl($_SERVER['REQUEST_URI']);
+
+echo "<pre>";
+print_r($request);
+echo "</pre>";
+
+
+die;
+if(isset($_GET['controller']))
+    $controller = $_GET['controller'];
+else
+    $controller = 'users';
+
+
+switch($controller)
 {
-    $fp=fopen('users.txt', 'w');
-    fwrite($fp, 'sss');
-    fclose($fp);
+    case 'users':
+        include ("../modules/Application/src/Application/Controller/users.php");
+    break;
+    
+    case 'projects':
+        include ("../modules/Application/src/Application/Controller/projects.php");
+    break;
 }
 
 
-$tfini = microtime(true);
-$time = $tfini - $tini;
-
-echo "Se hizo en $time segundos\n";
-echo "<hr/>";
-
-
-$tini = microtime(true);
-
-for($i=1;$i<=1000;$i++)
-{
-    $fp=fopen('users.txt', 'w');
-    fwrite($fp, 'sss');   
-}
-
-
-$tfini = microtime(true);
-$time = $tfini - $tini;
-
-echo "Se hizo en $time segundos\n";
-echo "<hr/>";
-
-$tini = microtime(true);
-
-for($i=1;$i<=1000;$i++)
-{
-    file_put_contents('users.txt', 'sss');    
-}
-
-
-$tfini = microtime(true);
-$time = $tfini - $tini;
-
-echo "Se hizo en $time segundos\n";
-echo "<hr/>";
