@@ -20,7 +20,7 @@ function RenderForm($formDefinition, $action, $method, $data = null)
         switch ($value['type'])
         {
             case "hidden":
-                $output=$output. ':<input type="'
+                $output=$output. '<input type="'
                     .$value['type']
                     .'" name="'
                         .$key

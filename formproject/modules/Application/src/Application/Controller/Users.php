@@ -1,75 +1,28 @@
 <?php
 
-echo "<pre>Post: ";
-print_r($_POST);
-echo "</pre>";
-
-echo "<pre>Get: ";
-print_r($_GET);
-echo "</pre>";
-
 switch ($request['action'])
 {
     case 'select':
-         // leer en un string los datos de users.txt
         $users = file_get_contents('../data/users.txt');
-        
-        // separar por saltos de linea el string en un array
         $users = explode("\n", $users);
         
-        // separar por comas cada linea del array
         foreach ($users as $user)
-        {
             $array[]=explode(',',$user);
-        }
         
-        // Dibujar la tabla
-        echo "<a href=\"/users.php?action=insert\">Insert</a>";
-        if(is_array($array)){
-            echo "<table border =1 ><tbody>";
-   
-            foreach($array as $id => $value)
-            {
-                echo "<tr>";
-                
-                if(is_array($value)){
-    
-                    foreach($value as $value2)
-                    {
-                        echo "<td>$value2</td>";
-                    }
-                }
-                else{
-                    echo "<td>$value</td>";
-                }
-                // agregar una columna mas con update y delete
-                echo "<td>";
-                echo "<a href=\"/users.php?action=update&id=".$id."\">Update</a> | ";
-                echo "<a href=\"/users.php?action=delete&id=".$id."\">Delete</a>";
-                echo "</td>";
-                
-                echo "</tr>";
-            }
-            echo "<tbody></table>";
-        }            
+
+        include (APPLICATION_PATH."/../views/users/select.phtml");
+          
     break;
 
     case 'insert':
-
         if($_POST)
         {
-            echo "esto es procear";
             file_put_contents('../data/users.txt', implode(',',$_POST)."\n", FILE_APPEND );
             header('Location: /users.php');
         }
         else 
         {
-            echo "formulario vacio";
-            $userForm = include('../modules/Application/src/Application/Forms/UserForm.php');
-            include ('../modules/Application/src/Application/View/Helper/RenderForm.php');
-            
-            $html = RenderForm ($userForm, '/users.php?action=insert', 'POST');
-            echo $html;
+            include (APPLICATION_PATH."/../views/users/insert.phtml");
         }
     break;
     
@@ -94,22 +47,13 @@ switch ($request['action'])
         {
             $users = file_get_contents('../data/users.txt');
             $users = explode("\n", $users);
-            $user = explode(",",$users[$_GET['id']]);
+            $user = explode(",",$users[$request['params']['id']]);
             
             $user = array('name'=>$user[1],
                           'password'=>$user[2],
                           'gender'=>$user[3]  
             );
-            $user['id']=$_GET['id'];
-            
-            $userForm = include('../Forms/UserForm.php');
-            include ('../View/Helper/RenderForm.php');
-            
-            $html = RenderForm ($userForm, 
-                                '/users.php?action=update', 
-                                'POST',
-                                $user);
-            echo $html;
+            include (APPLICATION_PATH."/../views/users/update.phtml");
             
             
         }
@@ -138,7 +82,7 @@ switch ($request['action'])
         }
         else
         {
-            include ("../../views/users/delete.php");
+            include (APPLICATION_PATH."/../views/users/delete.phtml");
             
         }
         

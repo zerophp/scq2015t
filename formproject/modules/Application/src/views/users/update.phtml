@@ -1,0 +1,12 @@
+<?php 
+
+$user['id']=$request['params']['id'];
+
+$userForm = include(APPLICATION_PATH.'/Forms/UserForm.php');
+include (VENDOR_PATH.'/acl/Zerophp/src/Zerophp/RenderForm.php');
+
+$html = RenderForm ($userForm,
+    '/users.php?action=update',
+    'POST',
+    $user);
+echo $html;

@@ -1,0 +1,29 @@
+<?php 
+// echo "<pre>";
+// print_r($array);
+// echo "</pre>";
+// $array=array(array(1,2,3,4), array(5,6,7,8), array(9,10,11,12));
+?>
+
+<a href="/users/insert">Insert</a>
+<?php if(is_array($array)):?>
+    <table border =1 >
+        <tbody>
+            <?php foreach($array as $id => $value):?>
+                <tr>
+                    <?php if(is_array($value)): ?>
+                            <?php foreach($value as $value2): ?>
+                                <td><?php echo $value2;?></td>
+                            <?php endforeach;?>
+                    <?php else:?>
+                            <td><?php echo $value;?></td>
+                    <?php endif; ?>
+                    <td>
+                        <a href="/users/update/id/<?php echo $id;?>">Update</a> | 
+                        <a href="/users/delete/id/<?=$id;?>">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach;?>
+        <tbody>
+    </table>
+<?php endif; ?>
