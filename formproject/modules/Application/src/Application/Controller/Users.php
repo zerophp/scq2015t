@@ -8,12 +8,7 @@ echo "<pre>Get: ";
 print_r($_GET);
 echo "</pre>";
 
-if(isset($_GET['action']))
-    $action = $_GET['action'];
-else
-    $action = 'select';
-
-switch ($action)
+switch ($request['action'])
 {
     case 'select':
          // leer en un string los datos de users.txt

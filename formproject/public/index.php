@@ -1,34 +1,39 @@
 <?php 
 
 echo "<pre>";
-print_r($_SERVER);
+print_r($_SERVER['REQUEST_URI']);
 echo "</pre>";
 
 
-include ("../vendor/zerophp/core/parseUrl.php");
+define ("APPLICATION_PATH", __DIR__.'/../modules/Application/src/Application');
+define ("VENDOR_PATH", __DIR__.'/../vendor');
+
+
+include (VENDOR_PATH."/acl/Zerophp/src/Zerophp/parseUrl.php");
 $request = parseUrl($_SERVER['REQUEST_URI']);
 
-echo "<pre>";
+echo "<pre>request: ";
 print_r($request);
 echo "</pre>";
 
 
-die;
-if(isset($_GET['controller']))
-    $controller = $_GET['controller'];
-else
-    $controller = 'users';
 
 
-switch($controller)
+switch($request['controller'])
 {
+
     case 'users':
-        include ("../modules/Application/src/Application/Controller/users.php");
+        include (APPLICATION_PATH."/Controller/users.php");
     break;
     
     case 'projects':
-        include ("../modules/Application/src/Application/Controller/projects.php");
+        include (APPLICATION_PATH."/Controller/projects.php");
     break;
+    
+    case 'error':
+        
+    break;
+    
 }
 
 
