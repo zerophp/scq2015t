@@ -2,6 +2,7 @@
 
 switch ($request['action'])
 {
+    case 'index':
     case 'select':
         $users = file_get_contents('../data/users.txt');
         $users = explode("\n", $users);
@@ -9,8 +10,10 @@ switch ($request['action'])
         foreach ($users as $user)
             $array[]=explode(',',$user);
         
-
-        include (APPLICATION_PATH."/../views/users/select.phtml");
+        ob_start();
+            include (APPLICATION_PATH."/../views/users/select.phtml");
+            $content = ob_get_contents();
+        ob_end_clean();
           
     break;
 
@@ -89,3 +92,6 @@ switch ($request['action'])
     break;
         
 }
+ 
+// include (APPLICATION_PATH."/../views/layouts/jumbotron-narrow.phtml");
+include (APPLICATION_PATH."/../views/layouts/dashboard.phtml");
