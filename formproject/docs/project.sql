@@ -98,7 +98,7 @@ CREATE TABLE `transport` (
   `idtransport` int(11) NOT NULL AUTO_INCREMENT,
   `transport` varchar(45) NOT NULL,
   PRIMARY KEY (`idtransport`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
-INSERT INTO `transport` VALUES (1,'bicicleta'),(2,'moto'),(3,'coche');
+INSERT INTO `transport` VALUES (1,'bicicleta'),(2,'moto'),(3,'coche'),(4,'barco'),(5,'avion');
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,8 +132,8 @@ CREATE TABLE `user` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `fk_user_gender_idx` (`gender_idgender`),
   KEY `fk_user_city1_idx` (`city_idcity`),
-  CONSTRAINT `fk_user_gender` FOREIGN KEY (`gender_idgender`) REFERENCES `gender` (`idgender`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_city1` FOREIGN KEY (`city_idcity`) REFERENCES `city` (`idcity`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_city1` FOREIGN KEY (`city_idcity`) REFERENCES `city` (`idcity`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_gender` FOREIGN KEY (`gender_idgender`) REFERENCES `gender` (`idgender`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -160,8 +160,8 @@ CREATE TABLE `user_has_language` (
   PRIMARY KEY (`user_iduser`,`language_idlanguage`),
   KEY `fk_user_has_language_language1_idx` (`language_idlanguage`),
   KEY `fk_user_has_language_user1_idx` (`user_iduser`),
-  CONSTRAINT `fk_user_has_language_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_language_language1` FOREIGN KEY (`language_idlanguage`) REFERENCES `language` (`idlanguage`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_has_language_language1` FOREIGN KEY (`language_idlanguage`) REFERENCES `language` (`idlanguage`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_language_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -188,8 +188,8 @@ CREATE TABLE `user_has_transport` (
   PRIMARY KEY (`user_iduser`,`transport_idtransport`),
   KEY `fk_user_has_transport_transport1_idx` (`transport_idtransport`),
   KEY `fk_user_has_transport_user1_idx` (`user_iduser`),
-  CONSTRAINT `fk_user_has_transport_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_transport_transport1` FOREIGN KEY (`transport_idtransport`) REFERENCES `transport` (`idtransport`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_user_has_transport_transport1` FOREIGN KEY (`transport_idtransport`) REFERENCES `transport` (`idtransport`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_transport_user1` FOREIGN KEY (`user_iduser`) REFERENCES `user` (`iduser`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -212,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-22 20:31:47
+-- Dump completed on 2015-04-23 16:47:09
