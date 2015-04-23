@@ -2,7 +2,8 @@
 return array (
     'param3'        => 'kaka',
     'database'      => array('host'=>'localhost',
-                             'user'=>'root',
-                             'password'=>'1234'
+                             'user'=>'php',
+                             'password'=>'123456',
+                             'database'=>'project'
     )
 );

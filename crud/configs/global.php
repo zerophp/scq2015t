@@ -7,6 +7,7 @@ return array (
     'database'      => array('host'=>'localhost',
                              'user'=>'root',
                              'password'=>''
-                            )
+                            ),
+    'adapter'       =>'mysql'   //mysql, txt, gd
 );
 
