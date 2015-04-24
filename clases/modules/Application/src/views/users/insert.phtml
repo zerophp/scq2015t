@@ -1,0 +1,7 @@
+<?php 
+
+$userForm = include('../modules/Application/src/Application/Forms/UserForm.php');
+include (VENDOR_PATH.'/acl/Zerophp/src/Zerophp/RenderForm.php');
+
+$html = RenderForm ($userForm, '/users.php?action=insert', 'POST');
+echo $html;
