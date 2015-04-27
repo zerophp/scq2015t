@@ -1,38 +1,47 @@
 <?php
+namespace Crud\Controller;
 
+use acl\Zerophp\View;
 
-switch ($request['action'])
-{
-    case 'index':
-    case 'select':
-        
-//         $array = getUsers($config['database']);     
+class Crud
+{    
+    public $layout = 'dashboard';
+    
+    public function selectAction()
+    {
+//                 $array = getUsers($config['database']);
+
+        $array = array (1,2,3);
         $resource = 'user';
         $adater = ' Mysql';
-        
-        
-        
-        
-        
-        
-        $content = renderView(CRUD_PATH."/../views/users/select.phtml",
-                              array('users'=>$array));  
-    break;
 
-    case 'insert':
+        $content = View::renderView(__DIR__."/../../views/users/select.phtml",
+            array('users'=>$array));
+        
+        return $content;
+//         include (APPLICATION_PATH."/../views/layouts/dashboard.phtml");
+    }
+    
+    public function insertAction()
+    {
         if($_POST)
         {
             setUser($_POST);
             header('Location: /users.php');
         }
-        else 
+        else
         {
-            $content = renderView(CRUD_PATH."/../views/users/insert.phtml");
+            $userForm = include('../modules/Application/src/Application/Forms/UserForm.php');
+            
+            $content = View::renderView(__DIR__."/../../views/users/insert.phtml",
+                                            array('form'=>$userForm)
+                                        );
         }
-    break;
+        return $content;
+    }
     
-    case 'update':
-
+    public function updateAction()
+    {
         if ($_POST)
         {
             patchUser($id, $data);
@@ -40,28 +49,32 @@ switch ($request['action'])
         }
         else
         {
-            $user = getUser($id);            
-            $content = renderView(CRUD_PATH."/../views/users/update.phtml",
-                array('user'=>$user));  
+            $user = getUser($id);
+            $content = View::renderView(__DIR__."/../../views/users/update.phtml",
+                array('user'=>$user));
         }
-    break;
+        return $content;
+    }
     
-    case 'delete':   
+    public function deleteAction()
+    {
         if($_POST)
         {
             if($_POST['borrar']=='si')
             {
                 deleteUser($id);
             }
-            header ('Location: /users.php');            
+            header ('Location: /users.php');
         }
         else
         {
-            $user = getUser($id);           
-            $content = renderView(CRUD_PATH."/../views/users/delete.phtml",
-                array('user'=>$user)); 
-        }        
-    break;        
+            $user = getUser($id);
+            $content = View::renderView(__DIR__."/../../views/users/delete.phtml",
+                array('user'=>$user));
+        }
+        return $content;
+    }
+    
 }
- 
-include (APPLICATION_PATH."/../views/layouts/dashboard.phtml");
+
+

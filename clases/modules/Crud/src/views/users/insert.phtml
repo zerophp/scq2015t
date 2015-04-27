@@ -1,7 +1,5 @@
 <?php 
+$userForm = $viewData['form'];
+$html = acl\Zerophp\Form::RenderForm ($userForm, '/crud/insert', 'POST');
 
-$userForm = include('../modules/Application/src/Application/Forms/UserForm.php');
-include (VENDOR_PATH.'/acl/Zerophp/src/Zerophp/RenderForm.php');
-
-$html = RenderForm ($userForm, '/crud/insert', 'POST');
 echo $html;
