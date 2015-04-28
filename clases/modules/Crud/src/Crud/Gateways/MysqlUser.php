@@ -1,16 +1,15 @@
 <?php
-namespace Crud\Gateway;
+namespace Crud\Gateways;
 
-class MysqlUser
+use Crud\Adapter\MysqlAdapter;
+
+class MysqlUser extends MysqlAdapter
 {
     public function getUsers()
     {
-        
-        
-        $db = new MysqlAdapter($config['database']);
         $sql = "SELECT * FROM user";
-        $result = $db->query($sql);
-        $array = $db->recordset($result);
+        $result = $this->query($sql);
+        $array = $this->recordset($result);
         
         return $array;
     }

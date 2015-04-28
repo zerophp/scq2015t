@@ -7,11 +7,12 @@ use acl\ZerophpCore\Config;
 class UserMapper 
 {
     protected $resource = 'User';
+    private $config;
     
     private function getAdapter()
     {
-        $config = Config::$config;
-        return $config['adapter'];
+        $this->config = Config::$config;
+        return $this->config['adapter'];
     }
     
     public function getUsers()
@@ -20,14 +21,8 @@ class UserMapper
         $adapter = $this->getAdapter();         // Mysql | File
         
         $classname = $adapter.$this->resource;
-        $classname = 'Crud\\Gateway\\'.$classname;
-  
-        $gateway = new $classname();
-        
-        
-        die;
-//         $gateway = new MysqlUser();
-        
+        $classname = 'Crud\\Gateways\\'.$classname;
+        $gateway = new $classname($this->config['database']);        
         $users = $gateway->getUsers();
         
         return $users;

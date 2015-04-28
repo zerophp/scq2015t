@@ -17,17 +17,11 @@ class Crud
     {
         $mapper = new UserMapper();
         $array = $mapper->getUsers();
-//                 $array = getUsers($config['database']);
-
-//         $array = array (1,2,3);
-        $resource = 'user';
-        $adater = ' Mysql';
 
         $content = View::renderView(__DIR__."/../../views/users/select.phtml",
             array('users'=>$array));
         
         return $content;
-//         include (APPLICATION_PATH."/../views/layouts/dashboard.phtml");
     }
     
     public function insertAction()
