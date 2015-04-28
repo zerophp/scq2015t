@@ -1,17 +1,25 @@
 <?php
 namespace Crud\Controller;
 
-use acl\Zerophp\View;
+use acl\ZerophpCore\View;
+use Crud\Mapper\UserMapper;
 
 class Crud
 {    
     public $layout = 'dashboard';
     
+    public function indexAction()
+    {
+        //header("Location: /crud/select");
+    }
+    
     public function selectAction()
     {
+        $mapper = new UserMapper();
+        $array = $mapper->getUsers();
 //                 $array = getUsers($config['database']);
 
-        $array = array (1,2,3);
+//         $array = array (1,2,3);
         $resource = 'user';
         $adater = ' Mysql';
 

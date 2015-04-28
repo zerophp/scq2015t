@@ -5,14 +5,15 @@ define ("ROOT_PATH", __DIR__.'/..');
 define ("APPLICATION_PATH", __DIR__.'/../modules/Application/src/Application');
 
 
-use acl\Zerophp\Router;
-use acl\Zerophp\Config;
-use acl\Zerophp\Dispatch;
-use acl\Zerophp\View;
+use acl\ZerophpCore\Router;
+use acl\ZerophpCore\Config;
+use acl\ZerophpCore\Dispatch;
+use acl\ZerophpCore\View;
+
+$routes = include (__DIR__.'/../configs/routes.config.php');
 
 $config = Config::readConfig(__DIR__.'/../configs/application.config.php');
-$router = Router::readRouter(explode("/",$_SERVER['REQUEST_URI'])[1]);
-$request = Router::parseUrl($_SERVER['REQUEST_URI'], $router);
+$request = Router::route($_SERVER['REQUEST_URI'], $routes);
 $reponse = Dispatch::dispatch($request);
 echo View::renderLayout($reponse['layout'], $reponse['content']);;
 

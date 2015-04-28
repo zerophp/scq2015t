@@ -8,6 +8,6 @@ return array (
                              'user'=>'root',
                              'password'=>''
                             ),
-    'adapter'       =>'mysql'   //mysql, txt, gd
+    'adapter'       =>'Mysql'   //mysql, txt, gd
 );
 

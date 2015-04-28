@@ -4,7 +4,7 @@ $array = $viewData['user'];
 $array['id']=$request['params']['id'];
 
 $userForm = include(APPLICATION_PATH.'/Forms/UserForm.php');
-include (VENDOR_PATH.'/acl/Zerophp/src/Zerophp/RenderForm.php');
+include (VENDOR_PATH.'/acl/ZerophpCore/src/ZerophpCore/RenderForm.php');
 
 $html = RenderForm ($userForm,'/users.php?action=update','POST',$array);
 echo $html;

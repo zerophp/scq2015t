@@ -11,7 +11,7 @@ class User
         include (APPLICATION_PATH.'/Models/Users/setUser.php');
         include (APPLICATION_PATH.'/Models/Users/patchUser.php');
         include (APPLICATION_PATH.'/Models/Users/deleteUser.php');
-        include (VENDOR_PATH.'/acl/Zerophp/src/Zerophp/renderView.php');
+        include (VENDOR_PATH.'/acl/ZerophpCore/src/ZerophpCore/renderView.php');
         
         switch ($request['action'])
         {
