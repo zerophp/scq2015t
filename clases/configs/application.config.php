@@ -1,6 +1,6 @@
 <?php
 
-$modules = array(
+return array(
     'ZerophpCore',
     'Application',
     'Crud',
