@@ -21,6 +21,16 @@ ModuleManager::getInstance(__DIR__.'/../configs/application.config.php');
 $response = Dispatch::dispatch($request);
 
 
+header("Content-Type: json");
+// echo "<pre>";
+// print_r();
+// echo "</pre>";
+
+echo json_encode($response['content']['data']);
+
+
+die;
+
 echo View::renderLayout($response['layout'], $response['content']);;
 
 

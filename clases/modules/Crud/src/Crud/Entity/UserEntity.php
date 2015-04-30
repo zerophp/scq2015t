@@ -5,11 +5,13 @@ class UserEntity
 {
     public $iduser;
     public $name;
-    protected $email;  
+    public $email;  
     private $password;  
     
     /**
      * @return the $password
+     * filter: iha203
+     * validate: int
      */
     public function getPassword()
     {

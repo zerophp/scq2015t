@@ -3,15 +3,10 @@ namespace Crud\Options;
 
 class ModuleOptions
 {
-    protected $emailAdmin = 'user@options.com';
-    
-    protected $param1 = 'valDefault';
-    
-    protected $param2 = 'valDefault2';
-    
-    
-    
-    
+    protected $emailAdmin = 'user@options.com';    
+    protected $param1 = 'valDefault';    
+    protected $param2 = 'valDefault2'; 
+        
     
     /**
      * @return the $param1

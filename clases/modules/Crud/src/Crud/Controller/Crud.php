@@ -21,9 +21,12 @@ class Crud implements OptionAwareInterface
         $mapper = new UserMapper();
         $array = $mapper->getUsers();
 
-        $content = View::renderView(__DIR__."/../../views/users/select.phtml",
-            array('users'=>$array));
+      
+//         $content = View::renderView(__DIR__."/../../views/users/select.phtml",
+//             array('users'=>$array));
         
+        $content['view'] = __DIR__."/../../views/users/select.phtml";
+        $content['data']=$array;
 //         echo $this->getOptions()->getEmailAdmin();
         
         return $content;

@@ -16,7 +16,7 @@ class Module
 
     private function __construct($options)
     {        
-        $this->options = $options;
+        $this->options = $options;        
     } 
 
     /**
