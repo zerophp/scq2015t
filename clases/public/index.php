@@ -9,11 +9,18 @@ use acl\ZerophpCore\Router;
 use acl\ZerophpCore\Config;
 use acl\ZerophpCore\Dispatch;
 use acl\ZerophpCore\View;
+use acl\ZerophpCore\ModuleManager;
 
 $routes = include (__DIR__.'/../configs/routes.config.php');
 
 $config = Config::readConfig(__DIR__.'/../configs/application.config.php');
 $request = Router::route($_SERVER['REQUEST_URI'], $routes);
-$reponse = Dispatch::dispatch($request);
-echo View::renderLayout($reponse['layout'], $reponse['content']);;
+
+ModuleManager::getInstance(__DIR__.'/../configs/application.config.php');
+
+$response = Dispatch::dispatch($request);
+
+
+echo View::renderLayout($response['layout'], $response['content']);;
+
 

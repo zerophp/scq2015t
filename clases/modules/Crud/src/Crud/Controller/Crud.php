@@ -3,10 +3,12 @@ namespace Crud\Controller;
 
 use acl\ZerophpCore\View;
 use Crud\Mapper\UserMapper;
+use acl\ZerophpCore\Interfaces\OptionAwareInterface;
 
-class Crud
+class Crud implements OptionAwareInterface
 {    
     public $layout = 'dashboard';
+    protected $options;
     
     public function indexAction()
     {
@@ -15,11 +17,14 @@ class Crud
     
     public function selectAction()
     {
+//         echo "select";
         $mapper = new UserMapper();
         $array = $mapper->getUsers();
 
         $content = View::renderView(__DIR__."/../../views/users/select.phtml",
             array('users'=>$array));
+        
+//         echo $this->getOptions()->getEmailAdmin();
         
         return $content;
     }
@@ -76,6 +81,26 @@ class Crud
         }
         return $content;
     }
+    
+    /**
+     * @return the $options
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param field_type $options
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
+   
+    
+    
     
 }
 

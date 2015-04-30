@@ -1,43 +1,33 @@
 <?php
 
-
-
 function autoload($classname)
 {
-//     echo "<pre>autoload: ";
-//     print_r($classname);
-//     echo "</pre>";
     $data = explode("\\",$classname);
-    
-//     echo "<pre>autoload: ";
-//     print_r($data);
-//     echo "</pre>";
-    
-//     die;
     $filename = __DIR__."\\Modules\\".$data[0]."\\src\\".$classname.".php";
-   
-   
     
     if(file_exists($filename))
         include $filename;
     else 
     {
-        $vendorname = __DIR__."\\Vendor\\".$data[0]."\\".$data[1]."\\src\\".$data[1]."\\".$data[2].".php";
-//         echo $vendorname;
+        $constructor = $data[0];
+        $package = $data[1];
+        unset($data[0]);
+        $class = implode("\\", $data);
+        $vendorname = __DIR__."\\Vendor\\".$constructor."\\".$package."\\src\\".$class.".php";
+
         if (file_exists($vendorname))
-            include $vendorname;
-        
+            include $vendorname;        
     }
         
-    return;
-   
-    
+    return;   
 }
 
 
-function libraryAutoload()
+function libraryAutoload($classname)
 {
-    echo "library";
+//     echo "<pre>autoload NOT FOUND: ";
+//     print_r($classname);
+//     echo "</pre>";
 }
 
 

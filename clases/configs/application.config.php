@@ -1,7 +1,12 @@
 <?php
 
 return array(
-    'ZerophpCore',
+    'acl\ZerophpCore',
     'Application',
     'Crud',
+    //Module1     // Uncomment if you need it
+    //Module2
+    //Module3
+    
+    
 );
